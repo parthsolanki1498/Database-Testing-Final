@@ -47,6 +47,20 @@ Running this command will run ESLint on the Persistence Service project.
 npm run lint
 ```
 
+#### Testing
+
+Running this command will run all the tests
+
+```bash
+npm run test
+```
+
+Running this command will run the tests in watch mode (the tests will re-run on save)
+
+```bash
+npm run test -- --watch
+```
+
 ### Using Dockerfile
 
 ---
