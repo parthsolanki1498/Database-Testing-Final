@@ -48,17 +48,14 @@ describe("flatfile", () => {
       }
     });
 
-    it("will insert object", () => {
+    it("will insert object into the designated file", () => {
       const flatfilePersistence = new FlatfilePersistence();
-
       flatfilePersistence.create("fooExample");
       expect(
         fs.existsSync(getPath("flatfileDb", "fooExample.json"))
       ).toBeTruthy();
 
       flatfilePersistence.insert<FooExample>(fooData, "fooExample");
-
-      console.log(fs.readFileSync(getPath("flatfileDb", "fooExample.json")));
 
       expect(
         JSON.parse(
@@ -68,7 +65,6 @@ describe("flatfile", () => {
         )
       ).toStrictEqual(fooData);
     });
-
     it.todo("will throw an error if location is not found");
   });
 

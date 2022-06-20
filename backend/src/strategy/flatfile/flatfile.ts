@@ -18,6 +18,12 @@ export default class FlatfilePersistence implements PersistenceService {
   }
 
   insert<T = unknown>(content: T, location: string) {
+    const insertPath = this.getPath("flatfileDb", `${location}.json`);
+
+    if (!fs.existsSync(insertPath)) {
+      throw Error("The path inidcated does not exist.");
+    }
+
     fs.appendFileSync(
       this.getPath("flatfileDb", `${location}.json`),
       JSON.stringify(content)
