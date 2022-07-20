@@ -1,7 +1,7 @@
 import cors from "cors";
 import express, { json } from "express";
 import postgresDataSource from "./strategy/postgresql";
-import PhotoApi, { Photo } from "./strategy/postgresql/photo";
+import PhotoApi from "./strategy/postgresql/photo";
 
 (async () => {
   const app = express();
@@ -11,8 +11,8 @@ import PhotoApi, { Photo } from "./strategy/postgresql/photo";
   const datasource = await postgresDataSource.initialize();
 
   new PhotoApi(datasource, app);
-  app.use("/", (_, res) => {
-    res.json("hello world");
+  app.get("/", (_, res) => {
+    return res.send("hello world");
   });
 
   app.listen(8000, () => {
