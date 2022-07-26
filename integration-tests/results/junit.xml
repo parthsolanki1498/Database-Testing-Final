@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="1" failures="0" errors="0" time="3.843">
+  <testsuite name="smoke" errors="0" failures="0" skipped="0" timestamp="2022-07-26T15:20:47" time="3.715" tests="1">
+    <testcase classname="smoke persistence-service status is 200" name="smoke persistence-service status is 200" time="0.081">
+    </testcase>
+  </testsuite>
+</testsuites>
