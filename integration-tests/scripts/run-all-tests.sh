@@ -9,7 +9,7 @@ SERVICE_URL="$URL$PORT"
 
 filename="junit.xml"
 file="/results/$filename"
-rm $file
+rm -f $file
 touch $file
 chmod 666 $file
 
