@@ -3,19 +3,10 @@ FROM node:lts-alpine
 WORKDIR /app
 
 COPY package*.json ./
+RUN  npm ci 
+
 COPY . .
-
-RUN \
-  npm ci && \
-  npm run build
-
-RUN \
-  apk add --update --virtual useradd-dep shadow && \
-  groupadd -g 101 appuser && \
-  useradd -r -u 101 -g appuser appuser && \
-  apk del useradd-dep
-
-USER appuser
+RUN npm run build
 
 EXPOSE 8000
 

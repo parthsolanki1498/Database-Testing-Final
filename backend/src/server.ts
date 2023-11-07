@@ -8,12 +8,6 @@ import FlatfilePersistence from "./strategy/flatfile";
   app.use(json());
 
   const flatfilePersistence = new FlatfilePersistence();
-  /* implement a route to retrieve table information */
-  //  app.get("/flatfile/:tableId", (req, res) => {
-  //    console.log(req.params);
-
-  //    return res.json(req.body.content);
-  //  });
 
   app.post("/flatfile/create/:tableId", (req, res) => {
     const { params } = req;
