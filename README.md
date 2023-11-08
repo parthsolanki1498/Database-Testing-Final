@@ -108,17 +108,17 @@ These commands are to be ran in the docker compose directory.
 #### Build the Image
 
 ```bash
-docker-compose build
+docker compose build
 ```
 
 #### Run the image
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 #### Build and Run the image
 
 ```bash
-docker-compose up -d --build
+docker compose up -d --build
 ```
