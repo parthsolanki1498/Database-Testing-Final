@@ -66,24 +66,34 @@ docker-compose up -d --build
 
 ## CURL Request for Insertion and Deletion
 ---
-Please use the following CURL Request to Insert or Delete for various entity class. Here's an example for Vehicle Table
+Please use the following CURL Request to Insert or Delete for various entity class. Here's an example for Employee Table since that class has all the HTTP methods implemented - namely GET, POST, PUT, DELETE
 
 Insertion
 ```curl
-curl --location 'http://localhost/vehicle' \
+curl --location --request PUT 'http://localhost/employee' \
 --header 'Content-Type: application/json' \
 --data '{
-    "type" : "Heavy Truck",
-    "brand" : "Optimus Prime",
-    "load" : 1000,
-    "capacity" : 100,
-    "year" : 2023,
-    "numberOfRepairs" : 0
+    "name" : "Parth",
+    "surname" : "Solanki",
+    "seniority" : "Student",
+    "mechanicalCertificationStatus" : "yes"
 }'
 ```
 ---
 Deletion
 ```curl
-curl --location --request DELETE 'http://localhost/vehicle/1'
+curl --location --request DELETE 'http://localhost/employee/1'
+```
+---
+Update
+```curl
+curl --location --request PUT 'http://localhost/employee/1' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name" : "Parth",
+    "surname" : "Solanki",
+    "seniority" : "Updated Student",
+    "mechanicalCertificationStatus" : "yes"
+}'
 ```
 
