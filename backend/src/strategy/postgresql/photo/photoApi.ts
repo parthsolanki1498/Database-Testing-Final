@@ -45,5 +45,36 @@ export default class PhotoApi {
         id: photo.id,
       });
     });
+
+    this.#express.delete("/photo/:id", async (req, res) => {
+      const photoId = parseInt(req.params.id);
+
+      try {
+        const photoToRemove = await this.#dataSource.manager.findOne(Photo, {
+          where: { id: parseInt(req.params.id) },
+        });
+
+        if (!photoToRemove) {
+          res.status(404);
+          return res.json({
+            error: "Photo not found.",
+          });
+        }
+
+        await this.#dataSource.manager.remove(photoToRemove);
+
+        console.log(`Photo with id ${photoId} has been deleted.`);
+        res.status(200);
+        return res.json({
+          message: "Photo deleted successfully.",
+        });
+      } catch (err) {
+        console.error("Error deleting photo:", err);
+        res.status(503);
+        return res.json({
+          error: "Photo deletion failed in db.",
+        });
+      }
+    });
   }
 }

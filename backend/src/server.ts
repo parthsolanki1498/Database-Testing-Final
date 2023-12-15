@@ -4,6 +4,7 @@ import postgresDataSource from "./strategy/postgresql";
 import PhotoApi from "./strategy/postgresql/photo";
 import vehicleApi from "./strategy/postgresql/vehicle/vehicleApi";
 import employeeApi from "./strategy/postgresql/employee/employeeApi";
+import employeeVehicleApi from "./strategy/postgresql/employeeVehicle/employeeVehicleApi";
 
 (async () => {
   const app = express();
@@ -25,6 +26,11 @@ import employeeApi from "./strategy/postgresql/employee/employeeApi";
   new employeeApi(datasource, app);
   app.get("/employeeApi", (_, res) => {
     return res.send("Employee API");
+  });
+
+  new employeeVehicleApi(datasource, app);
+  app.get("/employeeVehicleApi", (_, res) => {
+    return res.send("Employee Vehicle API");
   });
 
   app.listen(8000, () => {
