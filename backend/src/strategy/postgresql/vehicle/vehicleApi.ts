@@ -46,5 +46,36 @@ export default class vehicleApi {
         id: vehicle.vehicleId,
       });
     });
+
+    this.#express.delete("/vehicle/:id", async (req, res) => {
+        const vehicleId = parseInt(req.params.id);
+  
+        try {
+          const vehicleToRemove = await this.#dataSource.manager.findOne(Vehicle, {
+            where: { vehicleId: parseInt(req.params.id) },
+          });
+  
+          if (!vehicleToRemove) {
+            res.status(404);
+            return res.json({
+              error: "Vehicle not found.",
+            });
+          }
+  
+          await this.#dataSource.manager.remove(vehicleToRemove);
+  
+          console.log(`Vehicle with id ${vehicleId} has been deleted.`);
+          res.status(200);
+          return res.json({
+            message: "Vehicle deleted successfully.",
+          });
+        } catch (err) {
+          console.error("Error deleting Vehicle:", err);
+          res.status(503);
+          return res.json({
+            error: "Vehicle deletion failed in db.",
+          });
+        }
+      });
   }
 }

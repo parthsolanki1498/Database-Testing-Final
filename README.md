@@ -2,16 +2,22 @@
 
 ## Goal
 
-This project is here to demonstrate various topics covered in SENG8070. There
-are many branches in this project and each of them will cover a different topic.
+This project is implemented as Final Assignment for the subject Database Testing (SENG8070)
+This project was imported from Gitlab to Github from professor's repository and consists of several branches
+The branch that contains the final sumbission and we've worked upon is "postgres-orm"
 
 ## Getting started
 
 ### Requirements
 
-You will need NPM and Node installed on your local machine. It is highly
-recommended that you use a environment manager. The environment manager will
-prevent pollution of your local system.
+Considering the project shared on the dropbox had node_moudles removed from it, one need to run
+```bash
+npm install
+```
+command to have the dependencies install and considering "npm build" fails, please run the following command
+```bash
+npm i @types/jest
+```
 
 #### Quickest Way
 
