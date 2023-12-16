@@ -19,71 +19,6 @@ command to have the dependencies install and considering "npm build" fails, plea
 npm i @types/jest
 ```
 
-#### Quickest Way
-
-This can take some time to setup and understand how to use. For the quickest
-start, navigate to the [Download Page of Nodejs](https://nodejs.org/en/download/),
-download the correct package for your system, and install.
-
-#### Industry Standard Way
-
-##### Linux/macOs
-
-I highly recommend [NVM](https://github.com/nvm-sh/nvm).
-Read about the details on the NVM project page.
-
-###### Windows
-
-Setting up development for Windows is a little bit more complicated. There are
-three (3) pieces of technology you will most likely need:
-
-1. terminal
-2. SSH
-3. git
-
-For the terminal, I would recommend zsh or bash. Here is a tutorial on [setting
-up zsh on your Windows Machine](https://dev.to/zinox9/installing-zsh-on-windows-37em).
-
-On top of that, you will likely need to setup [SSH](https://docs.microsoft.com/en-us/windows/terminal/tutorials/ssh)
-and [git](https://git-scm.com/download/win). Please consult the documentation
-I've linked above to set those pieces of technology up.
-
-After that, the Environment Manager I recommend for Windows is [nvm-windows](https://github.com/coreybutler/nvm-windows).
-
-### Starting Development
-
-Validate that you have Node and NPM:
-
-```bash
-node -v
-```
-
-```bash
-npm -v
-```
-
-If you have them installed, you will be given the version number.
-
-Install the required dependencies:
-
-```bash
-npm install
-```
-
-Start the development environment:
-
-```bash
-npm start
-```
-
-### Tests
-
-Run tests with:
-
-```bash
-npm run test
-```
-
 #### Docker & docker-compose
 
 ---
@@ -128,3 +63,37 @@ docker-compose up -d
 ```bash
 docker-compose up -d --build
 ```
+
+## CURL Request for Insertion and Deletion
+---
+Please use the following CURL Request to Insert or Delete for various entity class. Here's an example for Employee Table since that class has all the HTTP methods implemented - namely GET, POST, PUT, DELETE
+
+Insertion
+```curl
+curl --location --request PUT 'http://localhost/employee' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name" : "Parth",
+    "surname" : "Solanki",
+    "seniority" : "Student",
+    "mechanicalCertificationStatus" : "yes"
+}'
+```
+---
+Deletion
+```curl
+curl --location --request DELETE 'http://localhost/employee/1'
+```
+---
+Update
+```curl
+curl --location --request PUT 'http://localhost/employee/1' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name" : "Parth",
+    "surname" : "Solanki",
+    "seniority" : "Updated Student",
+    "mechanicalCertificationStatus" : "yes"
+}'
+```
+
